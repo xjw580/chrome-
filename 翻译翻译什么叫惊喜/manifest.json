@@ -1,0 +1,28 @@
+{
+	"manifest_version":2,
+	"name":"翻译翻译什么叫惊喜",
+	"version":"1.0",
+	"description":"1.0:选中英文右键翻译(英译中,调用百度翻译api)。2.0:新增OCR翻译。",
+	"icons":{
+		"16":"images/translate.png",
+		"32":"images/translate.png",
+		"48":"images/translate.png"
+	},
+	"permissions":[
+		"contextMenus",
+		// "<all_urls>",
+		"tabs"
+	],
+	"background":{
+		"scripts":["js/jquery.min.js","js/blueimp-md5.js","js/bg.js"]
+	},
+	"content_scripts":[
+		{
+			"matches":["<all_urls>"],
+			"css":["css/zui.min.css"],
+			"js":["js/jquery.min.js","js/content.js"],
+			"run_at":"document_end"
+		}
+	]
+	
+}

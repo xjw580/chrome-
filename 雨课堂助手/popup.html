@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" href="zui.min.css" />
+		<link rel="stylesheet" href="popup.css" />
+		<script src="jquery.min.js"></script>
+		<script src="popup.js"></script>
+	</head>
+	<body>
+		<div id="main">
+			<div class="input-control has-label-left" title="通过自动刷新页面来判断是否有课">
+			  <input id="inputAccountExample0" type="text" class="form-control" placeholder="默认4分钟">
+			  <label id="word0"  for="inputAccountExample0" class="input-control-label-left">间隔/s:</label>
+			  <button id="update" class="btn btn-primary btn-sm" type="button">修改</button>
+				<br>
+				<br>
+			</div>
+			<div id="switch1" class="switch text-left" title="点名回在">
+			  <input id="check1" type="checkbox">
+			  <label >自动回应</label>
+			</div>
+			<div id="updaterel" class="input-control has-label-left" title="随机点名为你的名字或学号时触发" style="display: none;">
+			  <input id="inputAccountExample1" type="text" class="form-control" placeholder="默认点名">
+			  <label id="word1" for="inputAccountExample1" class="input-control-label-left">姓名:</label>
+			  <button id="update1" class="btn btn-primary btn-sm" type="button">修改</button>
+				<br>
+				<br>
+			</div>
+			<div id="updatere2" class="input-control has-label-left" title="触发自动回应" style="display: none;">
+			  <input id="inputAccountExample2" type="text" class="form-control" placeholder="默认回在">
+			  <label id="word2" for="inputAccountExample2" class="input-control-label-left">回应:</label>
+			  <button id="update2" class="btn btn-primary btn-sm" type="button">修改</button>
+				<br>
+				<br>
+			</div>
+			<div id="switch2" class="switch text-left" title="跟别人的弹幕">
+			  <input id="check2" type="checkbox">
+			  <label >自动跟答</label>
+			</div>
+		</div>
+		
+	</body>
+</html>

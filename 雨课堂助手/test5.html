@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="jquery.min.js"></script>
+		<script>
+			$(function(){
+				$(".test").attr("id","test")
+				document.getElementById("test").addEventListener("DOMNodeInserted",function(){
+					console.log("插入了"+new Date())
+				})
+				setTimeout(function(){
+					var dom=document.createElement("div")
+					dom.textContent="hhhhhh"
+					document.getElementById("test").appendChild(dom)
+					console.log("添加了"+new Date())
+				},10000)
+				var list=$(".test")
+				var len=list.length;
+				console.log($(list[len-1]).text());
+				setTimeout(function(){
+					// location.reload();
+					open(location, '_self').close();
+								// window.open("https://www.yuketang.cn/v2/web/index");  
+// document.location="https://www.yuketang.cn/v2/web/index";
+				},5000)
+			})
+		</script>
+	</head>
+	<body>
+		1111
+		<a href="javascript:window.opener=null;window.open('','_self');window.close();">关闭</a>
+		<div  class="test">11</div>
+		<div  class="test">22</div>
+		<div  class="test">33</div>
+	</body>
+</html>

@@ -1,0 +1,29 @@
+{
+	"manifest_version":2,
+	"name":"斗鱼助手",
+	"description":"自动寻宝和一键自动发弹幕",
+	"version":"1.0",
+	"icons":{
+		"16":"images/douyu.png",//扩展栏的icon，前面的数字代表px
+		"32":"images/douyu.png",
+		"48":"images/douyu.png"//扩展页的icon
+	},
+	"permissions":[
+		"notifications",
+		"storage",
+		"contextMenus",
+		"http://api.fanyi.baidu.com/"//允许跨域，能访问该网站而不被浏览器拦截
+	],
+	"background":{
+		"scripts":["js/bg.js"],
+		"persistent":false
+	},
+	"content_scripts":[//为当前页面注入js文件
+		{
+			"matches":["*://www.douyu.com/*"],//匹配网站
+			"js":["js/jquery.min.js","js/content.js"],
+			"run_at":"document_end"//在页面加载完成之后注入
+		}
+	]
+	
+}

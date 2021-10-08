@@ -1,0 +1,40 @@
+{
+	"manifest_version":2,
+	"name":"雨课堂助手",
+	"version":"1.0",
+	"description":"雨课堂自动签到，自动跟答，自动回应",
+	"icons":{
+		"16":"yu.png",
+		"32":"yu.png",
+		"48":"yu.png",
+		"128":"yu.png"
+	},
+	"background":{
+		"scripts":["jquery.min.js","bg.js"]
+	},
+	"browser_action":{
+		"default_popup":"popup.html"
+	},
+	"content_scripts":[
+		{
+			"matches":["*://www.yuketang.cn/*/web/index"],
+			"js":["jquery.min.js","content.js"],
+			"run_at":"document_end"
+			// "css":["zui.min.css","content.css"]
+		},
+		{
+			"matches":["https://www.yuketang.cn/lesson/*"],
+			"js":["jquery.min.js","content1.js"],
+			"run_at":"document_end"
+		}
+	],
+	"permissions":[
+		"tabs",
+		"activeTab",
+		"contextMenus",
+		"notifications",
+		"storage",
+		"declarativeContent"
+	],
+	"homepage_url":"https://xiaojiawei.club"
+}
