@@ -151,6 +151,8 @@ chrome.runtime.sendMessage("getRes",function(messages){
 							  window.location.href="about:blank";
 							  window.close();
 					},2000)
+				}else if($(list[len-1]).text().indexOf("老师已开启弹幕")!=-1){
+					location.reload();
 				}else{
 					dis=false
 					setTimeout(function(){

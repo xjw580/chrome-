@@ -48,7 +48,7 @@ chrome.runtime.onMessage.addListener(function(message,sender,callback){
 		chrome.notifications.create({//需要申请权限notifications，只能在后台中使用
 					type:"basic",
 					title:"老师未开启弹幕",
-					message:"请在老师开启弹幕后刷新页面",
+					message:"老师开启弹幕后将自动刷新页面",
 					iconUrl:"yu.png"
 				},function callback(){
 		});
