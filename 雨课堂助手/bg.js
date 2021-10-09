@@ -1,16 +1,4 @@
 chrome.runtime.onInstalled.addListener(function(){
-	/* chrome.declarativeContent.onPageChanged.removeRules(undefined,function(){
-		chrome.declarativeContent.onPageChanged.addRules([
-			{
-				conditions:[
-					new chrome.declarativeContent.PageStateMatcher({
-						pageUrl:{urlContains:"https://www.yuketang.cn/"}
-					})
-				],
-				actions:[new chrome.declarativeContent.ShowPageAction()]
-			}
-		])
-	}); */
 	chrome.tabs.create({ 
 	   url: chrome.extension.getURL("instructions.html"), 
 	   selected: true 
@@ -48,7 +36,7 @@ chrome.runtime.onMessage.addListener(function(message,sender,callback){
 		chrome.notifications.create({//需要申请权限notifications，只能在后台中使用
 					type:"basic",
 					title:"老师未开启弹幕",
-					message:"老师开启弹幕后将自动刷新页面",
+					message:"老师开启弹幕后可能需要手动刷新页面",
 					iconUrl:"yu.png"
 				},function callback(){
 		});
@@ -60,18 +48,19 @@ chrome.runtime.onMessage.addListener(function(message,sender,callback){
 					iconUrl:"yu.png"
 				},function callback(){
 		});
+	}else if("question"==message){
+		chrome.notifications.create({//需要申请权限notifications，只能在后台中使用
+					type:"basic",
+					title:"老师发题了！",
+					message:"(别摸鱼了)",
+					iconUrl:"yu.png"
+				},function callback(){
+		});
 	}
 	return true;
 });
 
-/* setTimeout(function(){
-	chrome.storage.sync.get("tabId",function(result){
-		chrome.tabs.sendMessage(result["tabId"],"hello",function(message){});
-	})
-},10000); */
-
 chrome.tabs.onUpdated.addListener(function (id, info, tab) {
-	// var url="https://www.yuketang.cn/v2/web/studentLog/7938566";
 	var url="https://www.yuketang.cn/lesson";
 	if(tab.url.indexOf(url)!=-1){
 			chrome.tabs.sendMessage(tabid,"urlChanged")

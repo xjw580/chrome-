@@ -122,13 +122,15 @@ chrome.runtime.sendMessage("getRes",function(messages){
 				}
 				var list=document.querySelectorAll(".timeline__item");
 				var len=list.length;
-				if($(list[len-1]).text().indexOf(name)!=-1){
+				var lastdom=$(list[len-1]).text();
+				var last=$(list[len-1])
+				if(lastdom.indexOf(name)!=-1){
 					chrome.runtime.sendMessage("point",function(message){})
 					if(plan=="1"){//第一种回应=================================================================
 						dis=false;
 						setTimeout(function(){
 							dis=true;
-						},100)//冷却时间
+						},200)//冷却时间
 						
 						window.inputValue(document.querySelector('.danmu__ipt'),content)
 						$(".danmu__send").trigger("click")
@@ -136,7 +138,7 @@ chrome.runtime.sendMessage("getRes",function(messages){
 						dis=false;
 						setTimeout(function(){
 							dis=true;
-						},100)//冷却时间
+						},200)//冷却时间
 						
 						document.querySelector(".icon-fadanmu").click()
 						window.inputValue(document.querySelector('.send__input'),content)
@@ -144,20 +146,26 @@ chrome.runtime.sendMessage("getRes",function(messages){
 						console.log("YKT->已经回应："+content);
 						document.querySelector(".send__close").click()
 					}
-				}else if($(list[len-1]).text().indexOf("下课啦！")!=-1){
+				}else if(lastdom.indexOf("下课啦！")!=-1){
 					chrome.runtime.sendMessage("over",function(message){});
 					window.open("https://www.yuketang.cn/v2/web/index");  
 					setTimeout(function(){
 							  window.location.href="about:blank";
 							  window.close();
 					},2000)
-				}else if($(list[len-1]).text().indexOf("老师已开启弹幕")!=-1){
+				}else if($(last).children("div[class='timeline__ppt problem']").text()!=""){
+					dis=false
+					setTimeout(function(){
+						dis=true;
+					},200)//冷却时间
+					chrome.runtime.sendMessage("question",function(message){});
+				}else if(lastdom.indexOf("老师已开启弹幕")!=-1){
 					location.reload();
 				}else{
 					dis=false
 					setTimeout(function(){
 						dis=true;
-					},100)//冷却时间
+					},200)//冷却时间
 					console.log("YKT->没点到你 "+new Date().toLocaleString());
 				}
 			});
