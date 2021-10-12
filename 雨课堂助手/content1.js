@@ -57,10 +57,10 @@ chrome.runtime.sendMessage("getRes",function(messages){
 					
 				if(plan=="1"){//第一种跟答=======================================================================
 					var content=$(".danmu__list>li:last").text();
-					if(content.indexOf("(我)")!=-1){
+					console.log("YKT->弹幕："+content);
+					if(content.indexOf("(我)")!=-1||content.indexOf("在")!=-1){
 						return;
 					}
-					console.log("YKT->弹幕："+content);
 					if(arr.indexOf(content)!=-1){
 						state=false;
 						rep=false;
