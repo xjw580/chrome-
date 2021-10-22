@@ -1,0 +1,28 @@
+{
+	"manifest_version":2,
+	"name":"学习通刷课助手",
+	"version":"1.00",
+	"description":"自动刷课，自动做题，全自动模式",
+	"background":{
+		"scripts":["js/bg.js"]
+		// "persistent":false
+	},
+	"content_scripts":[
+		{
+			"matches":["*://mooc1.chaoxing.com/mycourse/*"],
+			"js":["js/jquery.min.js","js/content.js"],
+			"run_at":"document_end"
+		}
+	],
+	"permissions":[
+		"notifications",
+		"<all_urls>"
+	],
+	"icons":{
+		"16":"images/chaoxing.png",
+		"32":"images/chaoxing.png",
+		"48":"images/chaoxing.png",
+		"128":"images/chaoxing.png"
+	}
+	
+}
